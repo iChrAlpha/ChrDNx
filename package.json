@@ -10,5 +10,9 @@
     "url": "git+https://github.com/ChrAlpha/ChrDNx.git"
   },
   "author": "ChrAlpha",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChrAlpha/ChrDNx/issues"
+  },
+  "homepage": "https://github.com/ChrAlpha/ChrDNx#readme"
 }
