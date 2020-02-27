@@ -1,8 +1,7 @@
 {
   "name": "chrdnx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My personal CDN package.",
-  "main": "README.md",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
