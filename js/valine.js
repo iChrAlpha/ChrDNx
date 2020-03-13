@@ -1,36 +1,37 @@
+'use strict'
+
 function query(selector) {
     return Array.from(document.querySelectorAll(selector));
 }
-function loadValine() {
-    var d = query('valine_conatainer')[0];
+
+function addScript(url) {
     var s = document.createElement('script');
-    s.src = 'https://unpkg.com/valine/dist/Valine.min.js';
+    s.setAttribute('src', url);
+    s.async = false
     document.body.appendChild(s);
-    var valine = new Valine();
-    valine.init({
-        el: '#valine_container',
-        notify: true,
-        verify: true,
-        appId: "FrtF1M9A3nUlChnLmbJX9v18-MdYXbMMI",
-        appKey: "ys9ICHGqYfDlPhwk5VPNHjDk",
-        placeholder: "填写邮箱方便收到动态通知哦~",
-        pageSize:'10',
-        avatar:'',
-        lang:'zh-cn',
-        visitor: 'false',
-        highlight:'true'
-    });
 }
-var io = new IntersectionObserver(function(entries) {
-    // console.log('In IO');
-    entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-            // console.log('In loading');
-            loadValine();
-            io.disconnect();
-        }
-    })
-});
-query('#valine_container').forEach(function(item) {
-    io.observe(item);
+
+function loadValine() {
+    addScript('https://unpkg.com/valine/dist/Valine.min.js');
+    addScript('https://cdn.jsdelivr.net/npm/chrdnx@1.2.1/js/valine_config.js');
+}
+
+var runningOnBrowser = typeof window !== "undefined";
+var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+
+setTimeout(function () {
+    if (!isBot && supportsIntersectionObserver) {
+        var io = new IntersectionObserver(function(entries) {
+            // console.log('In IO');
+            if (entries[0].isIntersecting) {
+                // console.log('In loading');
+                loadValine();
+                io.disconnect();
+            }
+        });
+        io.observe(document.getElementById('valine_container'));
+    } else {
+        loadValine();
+    }
 });
