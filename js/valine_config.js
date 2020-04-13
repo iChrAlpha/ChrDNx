@@ -12,5 +12,5 @@ valine.init({
     avatar:'',
     lang:'zh-cn',
     visitor: 'false',
-     highlight:'true'
+    highlight:'true'
 });
