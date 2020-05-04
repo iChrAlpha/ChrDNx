@@ -1,6 +1,6 @@
 {
   "name": "chrdnx",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "My personal CDN package.",
   "main": "README.md",
   "directories": {
