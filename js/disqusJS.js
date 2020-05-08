@@ -5,7 +5,7 @@ window.disqus_config = function () {
 new DisqusJS({
     shortname: 'chralpha',
     siteName: 'ChrAlpha 的幻想乡',
-    api: 'https://dc.1amblog.ml/',
+    api: 'https://disqusjs.ml/api/',
     apikey: 'a18bsKZH3l4wu9IV7RQpjdQPWaiFOeeW1HKFIXDhP6gXK39W84memwrq6hLN2Ipx',
     admin: 'chralpha',
     identifier: disqus_page_identifier,
